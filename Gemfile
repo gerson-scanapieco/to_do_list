@@ -52,6 +52,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails', "~> 4.0"
   gem 'pry'
   gem 'pry-byebug'
 end
@@ -59,7 +60,7 @@ end
 group :test do
   gem 'shoulda-matchers', require: false
   gem 'capybara', '~> 2'
-  gem 'factory_girl_rails', "~> 4.0"
+  # gem 'factory_girl_rails', "~> 4.0"
   gem 'database_cleaner'
   gem 'selenium-webdriver'
 end
