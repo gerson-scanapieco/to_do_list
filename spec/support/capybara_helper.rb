@@ -15,8 +15,6 @@ module CapybaraHelper
     fill_in "Password confirmation", with: "12345678"
 
     click_button "Sign up"
-
-    expect(page).to have_content "Bem vindo! Você realizou seu registro com sucesso."
   end
 
   def sign_in
@@ -27,8 +25,6 @@ module CapybaraHelper
       fill_in "Password", with: current_user.password
 
       click_button "Log in"
-
-      expect(page).to have_content "Login efetuado com sucesso."
     else
       page.set_rack_session(
         "warden.user.user.key" => User.serialize_into_session(current_user).unshift("User")
@@ -39,6 +35,16 @@ module CapybaraHelper
       # TODO
       # Apos implementar users#show, adicionar um 'expect(page).to have_content' aqui
       # para testar se esta tudo ok
+    end
+  end
+
+  def sign_out
+    within '#navbar .navbar-right' do
+      click_link current_user.email
+
+      within ".dropdown-menu" do
+        click_link "Sair"
+      end
     end
   end
 end
