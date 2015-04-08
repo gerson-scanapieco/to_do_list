@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
 require 'capybara/rails'
+require 'devise'
 require "rack_session_access/capybara"
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -53,6 +54,7 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, :type => :controller
+  config.include CapybaraHelper, :type => :feature
 
   config.extend ControllerMacros, :type => :controller
 end
