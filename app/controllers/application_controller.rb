@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   def set_layout
     devise_controller? ? 'devise' : 'application'
   end
+
+  def after_sign_in_path_for(resource)
+    user_path(resource)
+  end
 end
