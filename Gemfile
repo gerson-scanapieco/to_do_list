@@ -61,6 +61,7 @@ group :development, :test do
   gem 'pry-byebug'
 
   gem 'faker'
+  gem 'rack_session_access'
 end
 
 group :test do
