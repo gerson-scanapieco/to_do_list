@@ -47,4 +47,18 @@ module CapybaraHelper
       end
     end
   end
+
+  def access_nav_menu(paths)
+    path_1, path_2  = paths.split(" > ")
+
+    within '#navbar .navbar-left' do
+      click_link path_1
+
+      if path_2 
+        within ".dropdown-menu" do
+          click_link path_2
+        end
+      end
+    end
+  end
 end

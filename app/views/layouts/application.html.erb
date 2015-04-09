@@ -20,7 +20,7 @@
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-left">
             <li>
               <a href="#"> Favoritos </a> 
             </li>
@@ -28,7 +28,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Listas <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li>
-                  <a href="#"> Minhas listas </a>
+                  <%= link_to "Minhas listas", user_to_do_lists_path(current_user) %>
                 </li>
 
                 <li>
@@ -52,7 +52,12 @@
     </nav>
 
     <div class="container">
-      <%= render 'layouts/messages' %>
+      <div class="row">
+        <div class="col-md-4">
+          <%= render 'layouts/messages' %>
+        </div>
+      </div>
+
       <%= yield %>
     </div>
   </body>

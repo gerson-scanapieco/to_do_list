@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-4">
+
+    <div class="section-header">
+      <h2> Listas </h2>
+    </div>
+
+  </div>
+</div>
+
+<div class="section-content">
+  <div class="row">
+    <div class="col-md-4">
+      <%= link_to "Criar lista", new_user_to_do_list_path(current_user), class: "btn btn-success" %>
+    </div>
+  </div>
+
+  <div class="lists-container">
+    <% unless @to_do_lists.empty? %>
+      <%= @to_do_lists.each_slice(5) do |lists| %>
+        <div class="row lists-row">
+          <% lists.each do |list| %>
+            <div class='col-md-2'>
+              <div class="list-container">
+                <div class="list-title">
+                  <%= link_to list.name, to_do_list_path(list) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p> Nenhuma lista encontrada. </p>
+    <% end %>
+  </div>
+</div>
