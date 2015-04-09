@@ -6,6 +6,10 @@ class Ability
     can :read, ToDoList, list_type: ToDoListTypes::PUBLIC
     can :manage, ToDoList, user_id: user.id
 
+    # Assignments
+    can :manage, Assignment, to_do_list_id: user.to_do_list_ids
+    can :read, Assignment, to_do_list_id: ToDoList.public_lists.pluck(:id)
+
     # User
     can [:read, :update], User, id: user.id
     can :read, User
