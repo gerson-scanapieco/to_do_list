@@ -15,18 +15,24 @@ $(document).on "click", ".assignments-list .edit-assignment", ->
   assignmentEntry.find(".assignment-name").find("b").hide()
   assignmentEntry.find(".assignment-description").find("p").hide()
 
-  assignmentEntry.find(".assignment-name").append(["<input type='text' class='assignment-name-input' value=", assignmentName, "></input>"].join(""))
-  assignmentEntry.find(".assignment-description").append(["<input type='text' class='assignment-description-input' value=", assignmentDescription, "></input>"].join(""))
+  assignmentEntry.find(".assignment-name").append(
+    ["<input type='text' class='assignment-name-input' id='edit-assignment-name' value=", assignmentName, "></input>"].join("")
+  )
+
+  assignmentEntry.find(".assignment-description").append(
+    ["<input type='text' class='assignment-description-input' id='edit-assignment-description' value=", assignmentDescription, "></input>"].join("")
+  )
+
   $(this).siblings().find(".assignment-name-input").focus()
 
   $(this).closest(".assignment-entry-buttons").append([
-    '<button class="btn btn-success pull-right update-assignment" aria-label="Left Align">',
+    '<button class="btn btn-success pull-right update-assignment" id="update-assignment" aria-label="Left Align">',
       '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>',
     '</button>'].join("\n");
   )
 
   $(this).replaceWith([
-    '<button type="button" class="btn btn-warning pull-right cancel-update-assignment" aria-label="Left Align">',
+    '<button type="button" class="btn btn-warning pull-right cancel-update-assignment" id="cancel-update-assignment" aria-label="Left Align">',
       '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>',
     '</button>'].join("\n");
   )
