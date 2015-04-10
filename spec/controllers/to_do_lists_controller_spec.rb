@@ -170,4 +170,12 @@ RSpec.describe ToDoListsController, type: :controller do
       end
     end
   end
+
+  describe "GET #public" do
+    it "displays the template :public" do
+      get :public
+
+      expect(response).to render_template :public
+    end
+  end
 end

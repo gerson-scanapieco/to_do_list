@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :to_do_lists, shallow: true do
       member do
         get :assignment_form
-      end      
+      end
     end
   end
+
+  get "/public_to_do_lists", to: "to_do_lists#public"
 end

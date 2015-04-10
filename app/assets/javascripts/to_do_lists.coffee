@@ -66,3 +66,8 @@ $(document).on "click", ".assignments-list .cancel-update-assignment", ->
       '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>',
     '</button>'].join("\n");
   )
+
+$ ->
+  $("#public-lists-table").DataTable
+    "language": 
+      "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"

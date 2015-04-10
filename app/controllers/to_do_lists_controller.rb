@@ -1,6 +1,7 @@
 class ToDoListsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
+  skip_load_resource :only => :public
 
   def index
   end
@@ -69,6 +70,10 @@ class ToDoListsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def public
+    @to_do_lists = ToDoList.includes(:user).public_lists
   end
 
   private
