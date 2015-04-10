@@ -7,10 +7,31 @@
 </div>
 
 <div class="section-content">
-  <div class="row">
-    <div class="col-md-4">
-      <%= link_to "Editar lista", edit_to_do_list_path(@to_do_list), class: "btn btn-primary" %>
-      <%= link_to "Apagar lista", to_do_list_path(@to_do_list), method: :delete, class: "btn btn-danger" %>
+
+  <div class="assignments-container">
+    <div class="row">
+      <div class="col-md-4">
+
+        <ul class="assignments-list">
+          <% unless @to_do_list.assignments.empty? %> 
+            <% @to_do_list.assignments.order("created_at ASC").each do |assignment| %>
+              <%= render partial: "assignment_entry", locals: { assignment: assignment } %>
+            <% end %>
+          <% else %>
+            <%= render partial: "no_assignment_found" %>
+          <% end %>
+        </ul>
+        <%= link_to "Adicionar Tarefa", assignment_form_to_do_list_path(@to_do_list), :remote => true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-buttons-container">
+    <div class="row">
+      <div class="col-md-4">
+        <%= link_to "Editar lista", edit_to_do_list_path(@to_do_list), class: "btn btn-primary" %>
+        <%= link_to "Apagar lista", to_do_list_path(@to_do_list), method: :delete, class: "btn btn-danger" %>
+      </div>
     </div>
   </div>
 </div>

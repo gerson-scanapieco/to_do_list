@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   root :to => redirect('/users/sign_in')
 
   resources :users do
-    resources :to_do_lists, shallow: true
+    resources :to_do_lists, shallow: true do
+      member do
+        get :assignment_form
+      end      
+    end
   end
 end
