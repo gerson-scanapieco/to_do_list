@@ -21,17 +21,22 @@
             <%= render partial: "no_assignment_found" %>
           <% end %>
         </ul>
-        <%= link_to "Adicionar tarefa", assignment_form_to_do_list_path(@to_do_list), :remote => true %>
+
+        <% if can? :create, @to_do_list.assignments.build %>
+          <%= link_to "Adicionar tarefa", assignment_form_to_do_list_path(@to_do_list), :remote => true %>
+        <% end %>
       </div>
     </div>
   </div>
 
-  <div class="list-buttons-container">
-    <div class="row">
-      <div class="col-md-4">
-        <%= link_to "Editar lista", edit_to_do_list_path(@to_do_list), class: "btn btn-primary" %>
-        <%= link_to "Apagar lista", to_do_list_path(@to_do_list), method: :delete, class: "btn btn-danger" %>
+  <% if can? [:update, :destroy], @to_do_list %>
+    <div class="list-buttons-container">
+      <div class="row">
+        <div class="col-md-4">
+          <%= link_to "Editar lista", edit_to_do_list_path(@to_do_list), class: "btn btn-primary" %>
+          <%= link_to "Apagar lista", to_do_list_path(@to_do_list), method: :delete, class: "btn btn-danger" %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
