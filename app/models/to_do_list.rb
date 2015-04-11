@@ -1,7 +1,7 @@
 class ToDoList < ActiveRecord::Base
   belongs_to :user
-  has_many :assignments
-  has_many :favorite_to_do_lists
+  has_many :assignments, dependent: :destroy
+  has_many :favorite_to_do_lists, dependent: :destroy
 
   has_enumeration_for :list_type, with: ToDoListTypes, create_helpers: true
 
