@@ -1,0 +1,1 @@
+$(".assignments-list").find("[data-id='<%= @assignment.id %>']").replaceWith("<%= escape_javascript(render partial: 'assignment_entry', locals: { assignment: @assignment } ) %>");

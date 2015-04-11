@@ -1,10 +1,7 @@
  <li class="assignment-entry" data-id=<%= assignment.id %> > 
-  <%= simple_form_for @to_do_list, remote: true do |f| %>
-    <%= f.simple_fields_for :assignments, assignment do |remove_assignment_form| %>
-      <%= remove_assignment_form.input :name, as: :hidden, input_html: { class: "assignment-name-input-hidden" } %>
-      <%= remove_assignment_form.input :description, as: :hidden, input_html: { class: "assignment-description-input-hidden" } %>
-      <%= remove_assignment_form.input :_destroy, as: :hidden, input_html: { class: "destroy-assignment" } %>
-    <% end %>
+  <%= simple_form_for assignment, remote: true do |f| %>
+    <%= f.input :name, as: :hidden, input_html: { class: "assignment-name-input-hidden" } %>
+    <%= f.input :description, as: :hidden, input_html: { class: "assignment-description-input-hidden" } %>
 
     <% if can? [:update, :destroy], assignment %>
       <div class="assignment-entry-buttons">

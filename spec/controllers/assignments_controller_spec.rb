@@ -32,4 +32,28 @@ RSpec.describe AssignmentsController, type: :controller do
       expect(response).to render_template :create
     end
   end
+
+  describe "PUT #update" do
+    let(:assignment) { create(:assignment, to_do_list: to_do_list) }
+
+    it "sets the correct Assignment on @assignment" do
+      xhr :put, :update, { id: assignment.id, assignment: { name: "nome editado" } }
+
+      expect(assigns(:assignment)).to eq Assignment.find(assignment.id)
+    end
+
+    it "updates @assignment with the correct values" do
+      xhr :put, :update, { id: assignment.id, assignment: { name: "nome editado" } }
+
+      assignment.reload
+
+      expect(assignment.name).to eq "nome editado"
+    end
+
+    it "renders the template :update" do
+      xhr :put, :update, { id: assignment.id, assignment: { name: "nome editado" } }
+
+      expect(response).to render_template :update
+    end
+  end
 end
