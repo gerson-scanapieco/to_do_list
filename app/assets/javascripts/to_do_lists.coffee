@@ -71,3 +71,36 @@ $ ->
   $("#public-lists-table").DataTable
     "language": 
       "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+
+  # Requisicao AJAX para adicionar/remover lista dos favoritos
+  # ao clicar no botao com a estrela
+  $("#favorite-button").click ->
+    # Nao eh favorito.
+    if $(this).hasClass("btn-default")
+      to_do_list_id = $(".section-header").data("id")
+
+      $.ajax(
+        url: "/favorite_to_do_lists"
+        data: { "favorite_to_do_list": { "to_do_list_id": to_do_list_id } }
+        method: "POST"
+      ).done( (data) ->
+        $("#favorite-button").removeClass("btn-default").addClass("btn-warning")
+        $("#favorite-button").data("id", data.favorite_to_do_list.id)
+      ).fail (jqXHR, textStatus, errorThrown) ->
+        console.log(errorThrown)
+
+    # Eh favorito
+    else if $(this).hasClass("btn-warning")
+      favorite_to_do_list_id = $("#favorite-button").data("id")
+
+      $.ajax(
+        url: [ "/favorite_to_do_lists/", favorite_to_do_list_id ].join("")
+        data: { "id": favorite_to_do_list_id }
+        method: "DELETE"
+        dataType: "html"
+      ).done( (data) ->
+        $("#favorite-button").removeClass("btn-warning").addClass("btn-default")
+        $("#favorite-button").data("id", "")
+      ).fail (jqXHR, textStatus, errorThrown) ->
+        console.log(errorThrown)
+

@@ -11,4 +11,12 @@ class ToDoList < ActiveRecord::Base
 
   scope :public_lists, -> { where(list_type: ToDoListTypes::PUBLIC) }
   scope :dont_belong_to_user, -> user { where.not(user_id: user.id) }
+
+  def favorite?(user)
+    self.favorite_to_do_lists.where(user_id: user).any?
+  end
+
+  def favorite_id(user)
+    self.favorite_to_do_lists.where(user_id: user).take.id if favorite?(user)
+  end
 end

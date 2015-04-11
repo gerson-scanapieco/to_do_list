@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   end
 
   get "/public_to_do_lists", to: "to_do_lists#public"
+
+  resources :favorite_to_do_lists, only: [:create, :destroy]
 end

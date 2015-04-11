@@ -7,6 +7,7 @@ class ToDoListsController < ApplicationController
   end
 
   def show
+    @favorite = @to_do_list.favorite_id(current_user)
   end
 
   def new

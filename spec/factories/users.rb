@@ -13,5 +13,11 @@ FactoryGirl.define do
         create_list(:to_do_list, eval.lists_count, user: user )
       end
     end
+
+    trait :with_public_lists do
+      after(:create) do |user, eval|
+        create_list(:to_do_list, eval.lists_count, :public, user: user)
+      end
+    end
   end
 end

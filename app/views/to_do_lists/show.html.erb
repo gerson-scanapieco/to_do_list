@@ -1,7 +1,19 @@
 <div class="row">
-  <div class="col-md-3">
-    <div class="section-header">
+  <div class="section-header" data-id=<%= @to_do_list.id %> >
+    <div class="col-md-3">
       <h2> <%= @to_do_list.name %> </h2>
+    </div>
+
+    <div class="col-md-3">
+      <% if (can? :create, @to_do_list.favorite_to_do_lists.build)  && (can? :destroy, @to_do_list.favorite_to_do_lists.build )%>
+        <% button_class = @favorite ? "warning" : "default" %>
+          <div class="favorite-button-container pull-left">
+            <button type="button" class="btn btn-<%= button_class %>" id="favorite-button" data-id=<%= @favorite %> aria-label="Left Align">
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </button>
+          </div>
+      <% end %>
+
     </div>
   </div>
 </div>
@@ -38,5 +50,5 @@
         </div>
       </div>
     </div>
-  <% end %>
+    <% end %>
 </div>

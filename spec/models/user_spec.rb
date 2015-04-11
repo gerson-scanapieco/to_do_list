@@ -71,7 +71,7 @@ RSpec.describe User, type: :model do
 
       subject(:ability) { Ability.new(user) }
 
-      it { should have_abilities :manage, user_favorite_to_do_list }
+      it { should have_abilities [:create, :destroy], user_favorite_to_do_list }
 
       it { should not_have_abilities [:read, :create, :update, :destroy ], user_favorite_private_to_do_list }
     end
