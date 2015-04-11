@@ -68,10 +68,7 @@ $(document).on "click", ".assignments-list .cancel-update-assignment", ->
   )
 
 $ ->
-  $("#public-lists-table").DataTable
-    "language": 
-      "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
-
+  
   # Requisicao AJAX para adicionar/remover lista dos favoritos
   # ao clicar no botao com a estrela
   $("#favorite-button").click ->
