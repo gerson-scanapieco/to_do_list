@@ -1,0 +1,3 @@
+$(".assignments-list").find(".new-assignment").remove();
+$(".assignments-list").find(".no-assignment-found").remove();
+$(".assignments-list").append("<%= escape_javascript(render partial: 'assignment_entry', locals: { assignment: @to_do_list.assignments.last } ) %>" );

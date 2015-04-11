@@ -1,0 +1,9 @@
+<div class="new-assignment">
+  <%= simple_form_for [ @to_do_list, @assignment ], remote: true do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    
+    <button class='btn btn-success add-assignment'> Add </button>
+    <button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+  <% end %>
+</div>

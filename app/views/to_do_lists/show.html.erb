@@ -35,7 +35,7 @@
         </ul>
 
         <% if can? :create, @to_do_list.assignments.build %>
-          <%= link_to "Adicionar tarefa", assignment_form_to_do_list_path(@to_do_list), :remote => true %>
+          <%= link_to "Adicionar tarefa", new_to_do_list_assignment_path(@to_do_list), :remote => true %>
         <% end %>
       </div>
     </div>

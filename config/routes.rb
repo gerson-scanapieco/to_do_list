@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       member do
         get :assignment_form
       end
+
+      resources :assignments, only: [ :new, :create ]
     end
 
     resources :favorite_to_do_lists, only: :index
