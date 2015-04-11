@@ -9,11 +9,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :to_do_lists, shallow: true do
-      member do
-        get :assignment_form
-      end
-
-      resources :assignments
+      resources :assignments, except: :edit
     end
 
     resources :favorite_to_do_lists, only: :index

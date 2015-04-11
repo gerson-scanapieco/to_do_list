@@ -4,6 +4,7 @@ RSpec.describe AssignmentsController, type: :controller do
   login_user
 
   let!(:to_do_list) { create(:to_do_list, user: @user) }
+  let(:assignment) { create(:assignment, to_do_list: to_do_list) }
 
   describe "GET #new" do
     it "renders the the template :new" do
@@ -34,8 +35,6 @@ RSpec.describe AssignmentsController, type: :controller do
   end
 
   describe "PUT #update" do
-    let(:assignment) { create(:assignment, to_do_list: to_do_list) }
-
     it "sets the correct Assignment on @assignment" do
       xhr :put, :update, { id: assignment.id, assignment: { name: "nome editado" } }
 
@@ -54,6 +53,20 @@ RSpec.describe AssignmentsController, type: :controller do
       xhr :put, :update, { id: assignment.id, assignment: { name: "nome editado" } }
 
       expect(response).to render_template :update
+    end
+  end
+
+  describe "DELETE #destroy" do
+    it "sets the correct Assignment on @assignment" do
+      xhr :delete, :destroy, { id: assignment.id }
+
+      expect(assigns(:assignment)).to eq assignment
+    end
+
+    it "renders the template :destroy" do
+      xhr :delete, :destroy, { id: assignment.id }
+
+      expect(response).to render_template :destroy
     end
   end
 end

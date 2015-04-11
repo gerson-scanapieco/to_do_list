@@ -1,0 +1,3 @@
+if ( $(".assignments-list").find(".assignment-entry").length == 0 ) {
+  $(".assignments-list").append("<%= escape_javascript(render partial: 'to_do_lists/no_assignment_found') %>");
+}

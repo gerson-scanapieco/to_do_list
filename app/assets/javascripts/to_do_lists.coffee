@@ -1,8 +1,20 @@
 $(document).on "click", ".new-assignment .close", ->
   $(this).closest(".new-assignment").remove()
 
+# Ao clicar no botao de remocao, remove a div que contem o elemento
+# removido e executa o JS enviado pelo servidor.
 $(document).on "click", ".assignments-list .remove-assignment", ->
-  $(this).closest(".assignment-entry").find(".destroy-assignment").val("true")
+  assignment_id = $(this).closest(".assignment-entry").data("id")
+
+  $.ajax(
+    url: [ "/assignments/", assignment_id ].join("")
+    data: { "id": assignment_id }
+    method: "DELETE"
+  ).done( (response) ->
+    $(".assignments-list").find( ["[data-id='", assignment_id ,"']"].join("") ).remove()
+    eval(response)
+  ).fail (jqXHR, textStatus, errorThrown) ->
+    console.log(errorThrown)
 
 # Ao clicar no botao de edicao, eh possivel editar uma tarefa via AJAX.
 # Aparecem inputs onde estavam os campos da Tarefa, e o botao de edicao

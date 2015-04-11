@@ -31,19 +31,6 @@ class ToDoListsController < ApplicationController
   def update
     @to_do_list = ToDoList.find(params[:id])
 
-    # Verifica qual acao ocorreu no contexto do Assignment. 
-    # TODO
-    # REFACTOR
-    if to_do_list_params[:assignments_attributes]
-      if to_do_list_params[:assignments_attributes]["0"][:_destroy] == "true"
-        @removed = to_do_list_params[:assignments_attributes]["0"][:id]
-      elsif to_do_list_params[:assignments_attributes]["0"][:id]
-        @updated = Assignment.where(id: to_do_list_params[:assignments_attributes]["0"][:id])
-      elsif to_do_list_params[:assignments_attributes]
-        @added = true
-      end
-    end
-
     respond_to do |format|
       if @to_do_list.update_attributes(to_do_list_params)
         format.html { redirect_to to_do_list_path(@to_do_list), notice: "Alterações salvas com sucesso." }
