@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :to_do_lists
+  has_many :favorite_to_do_lists
 end

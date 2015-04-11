@@ -4,6 +4,7 @@ RSpec.describe ToDoList, type: :model do
   context "associations" do
     it { should belong_to :user }
     it { should have_many :assignments }
+    it { should have_many :favorite_to_do_lists }
   end
 
   context "validations" do
@@ -19,6 +20,15 @@ RSpec.describe ToDoList, type: :model do
     describe ".public_lists" do
       it "returns ToDoList that are public" do
         expect(ToDoList.public_lists.to_a).to eq [public_list]
+      end
+    end
+
+    describe ".dont_belong_to_user(user)" do
+      let!(:another_user) { create(:user, :with_lists) }
+      let(:another_user_list) { another_user.to_do_lists.first }
+
+      it "returns ToDoList that dont belong to given user" do
+        expect(ToDoList.dont_belong_to_user(user).to_a).to eq [another_user_list]
       end
     end
   end

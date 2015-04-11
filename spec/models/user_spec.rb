@@ -4,6 +4,7 @@ require "cancan/matchers"
 RSpec.describe User, type: :model do
   context "associations" do
     it { should have_many :to_do_lists }
+    it { should have_many :favorite_to_do_lists }
   end
 
   context "authorizations" do
@@ -55,6 +56,24 @@ RSpec.describe User, type: :model do
       it { should have_abilities(:read, another_user_public_list_assignment) }
 
       it { should not_have_abilities( [:read, :update, :destroy], another_user_list_assignment) }
+    end
+
+    context "favorite to_do_lists authorizations" do
+      let!(:user) { create(:user, :with_lists) }
+      let!(:user_list) { user.to_do_lists.last }
+
+      let!(:another_user) { create(:user, :with_lists) }
+      let!(:another_user_private_list) { another_user.to_do_lists.first }
+      let!(:another_user_public_list) { create(:to_do_list, :public, user: another_user) }
+
+      let!(:user_favorite_to_do_list) { create(:favorite_to_do_list, user: user, to_do_list: another_user_public_list) }
+      let!(:user_favorite_private_to_do_list) { create(:favorite_to_do_list, user: user, to_do_list: another_user_private_list) }
+
+      subject(:ability) { Ability.new(user) }
+
+      it { should have_abilities :manage, user_favorite_to_do_list }
+
+      it { should not_have_abilities [:read, :create, :update, :destroy ], user_favorite_private_to_do_list }
     end
   end
 end
