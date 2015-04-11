@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-4">
+
+    <div class="section-header">
+      <h2> Favoritos </h2>
+    </div>
+
+  </div>
+</div>
+
+<div class="section-content">
+  <table class="data-table" id="favorites-lists-table">
+    <thead>
+      <tr>
+        <th> Nome </th>
+        <th> Autor </th>
+        <th> Favorito em </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @favorites.each do |favorite| %>  
+        <tr>
+          <td> <%= link_to favorite.to_do_list_name, to_do_list_path(favorite.to_do_list) %> </td>
+          <td> <%= favorite.to_do_list.user.email %> </td>
+          <td> <%= I18n.l(favorite.created_at.to_date) %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

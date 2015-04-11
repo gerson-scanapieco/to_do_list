@@ -3,6 +3,24 @@ require 'rails_helper'
 RSpec.describe FavoriteToDoListsController, type: :controller do
   login_user
 
+  describe "GET #index" do
+    it "renders the template :index" do
+      get :index, user_id: @user.id
+
+      expect(response).to render_template :index
+    end
+
+    it "assigns to @favorites the correct value" do
+      another_user = create(:user)
+      to_do_list = create(:to_do_list, :public, user: another_user)
+      favorite = create(:favorite_to_do_list, to_do_list: to_do_list, user: @user)
+
+      get :index, user_id: @user.id
+
+      expect(assigns(:favorites)).to eq([favorite])
+    end
+  end
+
   describe "POST #create" do
     render_views
 
@@ -12,7 +30,7 @@ RSpec.describe FavoriteToDoListsController, type: :controller do
     it "returns a JSON response with the ID of the created FavoriteToDoList record" do      
       post :create, { format: "json", favorite_to_do_list: { to_do_list_id: another_user_public_list.id } }
 
-      expect(JSON.parse(response.body)["favorite_to_do_list"]["id"]).to eq 1
+      expect(JSON.parse(response.body)["favorite_to_do_list"]["id"]).to_not be_nil
     end
 
     it "creates a FavoriteToDoList record" do

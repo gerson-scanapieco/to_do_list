@@ -13,6 +13,8 @@ Rails.application.routes.draw do
         get :assignment_form
       end
     end
+
+    resources :favorite_to_do_lists, only: :index
   end
 
   get "/public_to_do_lists", to: "to_do_lists#public"

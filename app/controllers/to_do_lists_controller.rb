@@ -1,9 +1,10 @@
 class ToDoListsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
-  skip_load_resource :only => :public
+  skip_load_resource :only => [ :public, :index ]
 
   def index
+    @to_do_lists = current_user.to_do_lists
   end
 
   def show

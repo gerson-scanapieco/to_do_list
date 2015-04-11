@@ -8,6 +8,14 @@ feature "FavoriteToDoList" do
   let!(:another_user) { create(:user, :with_public_lists) }
   let!(:another_user_public_list) { another_user.to_do_lists.first }
 
+  scenario "View all favorite to_do_lists", js: true do
+    favorite = create(:favorite_to_do_list, user: current_user, to_do_list: another_user_public_list)
+
+    access_nav_menu "Favoritos"
+
+    expect(page).to have_content another_user_public_list.name
+  end 
+
   scenario "Add ToDoList to favorites", js: true do
     access_nav_menu "Listas > Listas públicas"
 

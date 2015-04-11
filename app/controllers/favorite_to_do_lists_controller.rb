@@ -1,6 +1,10 @@
 class FavoriteToDoListsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @favorites = FavoriteToDoList.includes(:to_do_list).where(user_id: params[:user_id]).to_a
+  end
+
   def create    
     @favorite_to_do_list = 
       current_user.favorite_to_do_lists.build(to_do_list_id: favorite_to_do_list_params[:to_do_list_id] )

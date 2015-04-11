@@ -7,7 +7,7 @@ class Ability
     can :manage, ToDoList, user_id: user.id
 
     # FavoriteToDoLists
-    can [:create, :destroy], FavoriteToDoList, to_do_list_id: ToDoList.public_lists.merge(ToDoList.dont_belong_to_user(user)).pluck(:id)
+    can [:read, :create, :destroy], FavoriteToDoList, to_do_list_id: ToDoList.public_lists.merge(ToDoList.dont_belong_to_user(user)).pluck(:id)
 
     # Assignments
     can :manage, Assignment, to_do_list_id: user.to_do_list_ids
