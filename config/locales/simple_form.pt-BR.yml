@@ -1,0 +1,21 @@
+pt-BR:
+  simple_form:
+    labels:
+      user:
+        username: 'Nome de usuário'
+        password: 'Senha'
+        password_confirmation: 'Confirme sua senha'
+    hints:
+      user:
+        username: 'Nome para entrar no sistema.'
+        password: 'Sem caracteres especiais, por favor.'
+    placeholders:
+      user:
+        username: 'Seu nome de usuário'
+        password: ''
+    include_blanks:
+      user:
+        age: 'Melhor não dizer'
+    prompts:
+      user:
+        gender: 'Selecione seu sexo'
