@@ -14,14 +14,20 @@
 .list-container {
   border-style: solid;
   border-width: 1px;
-  border-radius: 5px;
-  height: 65px;
+  border-color: #fff;
+  height: 100px;
+  width: 100%;
   text-align: center;
+  background-color: #512DA8;
 
   .list-title {
     position: relative;
-    top: 20px;
+    top: 35%;
     font-size: 17px;
+  }
+
+  .list-title > a {
+    color: #fff;
   }
 }
 
