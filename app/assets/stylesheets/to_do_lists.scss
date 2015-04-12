@@ -53,7 +53,19 @@
   }
 
   .new-assignment { 
-    padding-bottom: 15px;
+    margin-bottom: 15px;
+    padding: 5px;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.4);
+
+    .new-assignment-buttons {
+      position: relative;
+      right: 0;
+    }
+
+    .close-new-assignment-button-container {
+      position: relative;
+      top: -10px;
+    }
   }
 
   .close {

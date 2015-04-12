@@ -20,7 +20,7 @@ feature "Assignments" do
       fill_in "Nome", with: "nova tarefa"
       fill_in "Descrição", with: "descricao tarefa"
 
-      click_button "Add"
+      click_button "Adicionar"
     end
 
     expect(page).to_not have_content "Nenhuma tarefa encontrada."
