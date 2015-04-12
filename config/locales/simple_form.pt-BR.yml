@@ -1,5 +1,8 @@
 pt-BR:
   simple_form:
+    required:
+      text: 'obrigatório'
+      mark: '*'
     labels:
       user:
         name: "Nome"

@@ -14,7 +14,7 @@ module CapybaraHelper
     fill_in "user[password]", with: "12345678"
     fill_in "Confirme sua senha", with: "12345678"
 
-    click_button "Sign up"
+    click_button "Criar conta"
   end
 
   def sign_in
