@@ -8,11 +8,11 @@ module CapybaraHelper
   def sign_up
     visit root_path
 
-    click_link "Sign up"
+    click_link "Nova conta"
 
     fill_in "Email", with: "test@test.com"
     fill_in "user[password]", with: "12345678"
-    fill_in "Password confirmation", with: "12345678"
+    fill_in "Confirme sua senha", with: "12345678"
 
     click_button "Sign up"
   end
@@ -22,7 +22,7 @@ module CapybaraHelper
       visit new_user_session_path
 
       fill_in "Email", with: current_user.email
-      fill_in "Password", with: current_user.password
+      fill_in "Senha", with: current_user.password
 
       click_button "Log in"
     else
