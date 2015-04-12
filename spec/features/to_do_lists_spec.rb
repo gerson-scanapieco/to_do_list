@@ -12,7 +12,7 @@ feature "ToDoLists" do
 
     fill_in "Nome", with: "nova lista"
 
-    click_button "Criar To do list"
+    click_button "Salvar"
 
     expect(page).to have_content "Lista criada com sucesso."
   end
@@ -25,7 +25,7 @@ feature "ToDoLists" do
     fill_in "Nome", with: "nova lista"
     select "Pública", from: "Tipo"
 
-    click_button "Criar To do list"
+    click_button "Salvar"
 
     expect(page).to have_content "Lista criada com sucesso."
   end
@@ -41,7 +41,7 @@ feature "ToDoLists" do
 
     fill_in "Nome", with: "nome editado"
 
-    click_button "Atualizar To do list"
+    click_button "Salvar"
 
     expect(page).to have_content "Alterações salvas com sucesso"
     expect(page).to have_content "nome editado"
