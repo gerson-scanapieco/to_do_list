@@ -27,12 +27,18 @@ $(document).on "click", ".assignments-list .edit-assignment", ->
   assignmentEntry.find(".assignment-name").find("b").hide()
   assignmentEntry.find(".assignment-description").find("p").hide()
 
-  assignmentEntry.find(".assignment-name").append(
-    ["<input type='text' class='assignment-name-input' id='edit-assignment-name' value=", assignmentName, "></input>"].join("")
+  assignmentEntry.find(".assignment-name").append([
+      ["<div class='form-group'>"],
+        ["<input type='text' class='assignment-name-input form-control' id='edit-assignment-name' value=", assignmentName, "></input>"].join(""),
+      ["</div>"]
+    ].join("\n")
   )
 
-  assignmentEntry.find(".assignment-description").append(
-    ["<textarea class='assignment-description-input' id='edit-assignment-description'>", assignmentDescription, "</textarea>"].join("")
+  assignmentEntry.find(".assignment-description").append([
+      ["<div class='form-group'>"],
+      ["<textarea class='assignment-description-input form-control' id='edit-assignment-description'>", assignmentDescription, "</textarea>"].join(""),
+      ["</div>"]
+    ].join("\n")
   )
 
   $(this).siblings().find(".assignment-name-input").focus()

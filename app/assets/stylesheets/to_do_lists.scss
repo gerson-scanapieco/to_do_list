@@ -26,7 +26,7 @@
     font-size: 17px;
   }
 
-  .list-title > a {
+  .list-title > b > a {
     color: #fff;
   }
 }
@@ -50,8 +50,8 @@
         margin-left: 8px;
       }
 
-      .assignment-name-input{
-        margin-bottom: 5px;
+      .assignment-name, .assignment-description {
+        overflow-wrap: break-word;
       }
     }
   }

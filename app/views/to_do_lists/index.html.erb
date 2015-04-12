@@ -12,13 +12,13 @@
 
   <div class="lists-container">
     <% unless @to_do_lists.empty? %>
-      <%= @to_do_lists.each_slice(5) do |lists| %>
+      <%= @to_do_lists.each_slice(4) do |lists| %>
         <div class="row lists-row">
           <% lists.each do |list| %>
             <div class='col-md-3'>
               <div class="list-container">
                 <div class="list-title">
-                  <%= link_to list.name, to_do_list_path(list) %>
+                  <b> <%= link_to list.name, to_do_list_path(list) %> </b>
                 </div>
               </div>
             </div>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <%= link_to "Criar lista", new_user_to_do_list_path(current_user), class: "btn btn-lg btn-success" %>
     </div>
   </div>

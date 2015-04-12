@@ -1,10 +1,10 @@
 <div class="row">
   <div class="section-header" data-id=<%= @to_do_list.id %> >
-    <div class="col-md-3">
+    <div class="col-xs-8 col-md-3">
       <h2> <%= @to_do_list.name %> </h2>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-xs-4 col-md-3">
       <% if (can? :create, @to_do_list.favorite_to_do_lists.build)  && (can? :destroy, @to_do_list.favorite_to_do_lists.build )%>
         <% button_class = @favorite ? "warning" : "default" %>
           <div class="favorite-button-container pull-left">
@@ -22,10 +22,10 @@
 
   <div class="assignments-container">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
 
         <ul class="assignments-list">
-          <% unless @to_do_list.assignments.empty? %> 
+          <% unless @to_do_list.assignments.empty? %>
             <% @to_do_list.assignments.order("created_at ASC").each do |assignment| %>
               <%= render partial: "assignments/assignment_entry", locals: { assignment: assignment } %>
             <% end %>
