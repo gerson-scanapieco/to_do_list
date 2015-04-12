@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   layout :set_layout
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to main_app.root_url, :alert => "Você não tem permissão para acessar esta página."
+  end
+
   private
 
   def set_layout
