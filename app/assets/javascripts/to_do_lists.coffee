@@ -22,7 +22,7 @@ $(document).on "click", ".assignments-list .remove-assignment", ->
 $(document).on "click", ".assignments-list .edit-assignment", ->
   assignmentEntry = $(this).closest(".assignment-entry")
   assignmentName = assignmentEntry.find(".assignment-name").text()
-  assignmentDescription = assignmentEntry.find(".assignment-description").text()
+  assignmentDescription = assignmentEntry.find(".assignment-description p").text()
 
   assignmentEntry.find(".assignment-name").find("b").hide()
   assignmentEntry.find(".assignment-description").find("p").hide()
@@ -32,7 +32,7 @@ $(document).on "click", ".assignments-list .edit-assignment", ->
   )
 
   assignmentEntry.find(".assignment-description").append(
-    ["<input type='text' class='assignment-description-input' id='edit-assignment-description' value=", assignmentDescription, "></input>"].join("")
+    ["<textarea class='assignment-description-input' id='edit-assignment-description'>", assignmentDescription, "</textarea>"].join("")
   )
 
   $(this).siblings().find(".assignment-name-input").focus()
