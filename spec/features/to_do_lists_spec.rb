@@ -10,7 +10,7 @@ feature "ToDoLists" do
 
     click_link "Criar lista"
 
-    fill_in "Name", with: "nova lista"
+    fill_in "Nome", with: "nova lista"
 
     click_button "Criar To do list"
 
@@ -22,8 +22,8 @@ feature "ToDoLists" do
 
     click_link "Criar lista"
 
-    fill_in "Name", with: "nova lista"
-    select "Pública", from: "List type"
+    fill_in "Nome", with: "nova lista"
+    select "Pública", from: "Tipo"
 
     click_button "Criar To do list"
 
@@ -39,7 +39,7 @@ feature "ToDoLists" do
 
     click_link "Editar lista"
 
-    fill_in "Name", with: "nome editado"
+    fill_in "Nome", with: "nome editado"
 
     click_button "Atualizar To do list"
 

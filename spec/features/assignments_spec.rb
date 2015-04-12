@@ -17,8 +17,8 @@ feature "Assignments" do
     click_link "Adicionar tarefa"
 
     within ".new-assignment" do
-      fill_in "Name", with: "nova tarefa"
-      fill_in "Description", with: "descricao tarefa"
+      fill_in "Nome", with: "nova tarefa"
+      fill_in "Descrição", with: "descricao tarefa"
 
       click_button "Add"
     end

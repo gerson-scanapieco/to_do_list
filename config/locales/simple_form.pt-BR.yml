@@ -2,9 +2,16 @@ pt-BR:
   simple_form:
     labels:
       user:
+        name: "Nome"
         username: 'Nome de usuário'
         password: 'Senha'
         password_confirmation: 'Confirme sua senha'
+      to_do_list:
+        name: "Nome"
+        list_type: "Tipo"
+      assignment:
+        name: "Nome"
+        description: "Descrição"
     hints:
       user:
         username: 'Nome para entrar no sistema.'

@@ -31,10 +31,6 @@ module CapybaraHelper
       )
 
       visit user_path(current_user)
-
-      # TODO
-      # Apos implementar users#show, adicionar um 'expect(page).to have_content' aqui
-      # para testar se esta tudo ok
     end
   end
 
