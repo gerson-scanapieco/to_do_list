@@ -1,6 +1,29 @@
 $(document).on "click", ".new-assignment .close", ->
   $(this).closest(".new-assignment").remove()
 
+# Validar form de novo Assignment antes de enviar ao servidor
+#
+$(document).on "click", ".new-assignment .add-assignment", (event) ->
+  assignment_name = $(this).closest(".new-assignment").find("#assignment_name")
+  if assignment_name.val() == ""
+    assignment_name.parent().addClass("has-error")
+    event.preventDefault()
+
+# Ao digitar algo no input #assignment_name do form de novo Assignment,
+# retirar a classe 'has-error' e adicionar a classe 'has-success' se
+# o input nao estiver em branco
+$(document).on "keypress", ".new-assignment #assignment_name", (event) ->
+  $(this).parent().removeClass("has-error") if $(this).parent().hasClass("has-error")
+  $(this).parent().addClass("has-success") unless $(this).parent().hasClass("has-success")
+
+# Ao digitar algo no input 'nome' quando esta editando um Assignment,
+# retirar a class 'has-error' e adicionar a classe 'has-success' se o input nao
+# estiver em branco
+$(document).on "keypress",".assignments-list .assignment-name-input", (event) ->
+  $(this).parent().removeClass("has-error") if $(this).parent().hasClass("has-error")
+  $(this).parent().addClass("has-success") unless $(this).parent().hasClass("has-success")
+
+
 # Ao clicar no botao de remocao, remove a div que contem o elemento
 # removido e executa o JS enviado pelo servidor.
 $(document).on "click", ".assignments-list .remove-assignment", ->
@@ -57,11 +80,21 @@ $(document).on "click", ".assignments-list .edit-assignment", ->
 
 # Ao clicar no botao de salvar alteracoes na Tarefa, antes de enviar os dados
 # para o servidor eh preciso setar nos inputs ocultos os dados editados pelo usuario.
-$(document).on "click", ".assignments-list .update-assignment", ->
+# Nao deve enviar dados se o campo 'nome' estiver vazio
+#
+$(document).on "click", ".assignments-list .update-assignment", (event) ->
   assignmentEntry = $(this).closest(".assignment-entry")
 
-  editedName = assignmentEntry.find(".assignment-name").find(".assignment-name-input").val()
+  nameField = assignmentEntry.find(".assignment-name").find(".assignment-name-input")
+  editedName = nameField.val()
   editedDescription = assignmentEntry.find(".assignment-description").find(".assignment-description-input").val()
+
+  # Nao envia form se campo 'nome' estiver em branco e 
+  # marca o campo com erro
+  if editedName == ""
+    event.preventDefault
+    nameField.parent().addClass("has-error") unless nameField.parent().hasClass("has-error")
+    return false
 
   assignmentEntry.find(".assignment-name-input-hidden").val(editedName)
   assignmentEntry.find(".assignment-description-input-hidden").val(editedDescription)
