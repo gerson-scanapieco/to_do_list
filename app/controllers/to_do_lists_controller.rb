@@ -4,10 +4,10 @@ class ToDoListsController < ApplicationController
   skip_load_resource :only => [ :public, :index ]
 
   def index
-    user = 
+    @user = 
       params[:user_id] ? User.find(params[:user_id]) : current_user
 
-    @to_do_lists = user.to_do_lists
+    @to_do_lists = @user.to_do_lists
   end
 
   def show
