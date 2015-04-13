@@ -1,5 +1,6 @@
 $(document).on "click", ".new-assignment .close", ->
   $(this).closest(".new-assignment").remove()
+  $(".new-assignment-container").show()
 
 # Validar form de novo Assignment antes de enviar ao servidor
 #
