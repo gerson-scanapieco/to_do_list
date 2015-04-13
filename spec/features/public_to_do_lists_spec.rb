@@ -12,10 +12,10 @@ feature "PublicToDoLists" do
   let!(:another_user_private_list) { another_user.to_do_lists.first }
   let!(:another_user_public_list) { create(:to_do_list, :public, user: another_user) }
 
-  scenario "displaying public lists" do
+  scenario "displaying another user's public lists" do
     access_nav_menu "Listas > Listas públicas"
 
-    expect(page).to have_content public_list.name
+    expect(page).to_not have_content public_list.name
     expect(page).to have_content another_user_public_list.name
   end
 

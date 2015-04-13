@@ -64,8 +64,10 @@ class ToDoListsController < ApplicationController
     end
   end
 
+  # TODO
+  # TEST se nao aparece minhas proprias lists
   def public
-    @to_do_lists = ToDoList.includes(:user).public_lists
+    @to_do_lists = ToDoList.includes(:user).public_lists.merge(ToDoList.dont_belong_to_user(current_user))
   end
 
   private
