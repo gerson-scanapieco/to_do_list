@@ -28,6 +28,10 @@ feature "FavoriteToDoList" do
     sleep 1
 
     expect(page).to have_css "#favorite-button.btn-warning"
+
+    access_nav_menu "Favoritos"
+
+    expect(page).to have_content another_user_public_list.name
   end
 
   scenario "Remove ToDoList from favorites", js: true do
@@ -43,5 +47,9 @@ feature "FavoriteToDoList" do
     click_button "favorite-button"
 
     expect(page).to have_css "#favorite-button.btn-default"
+
+    access_nav_menu "Favoritos"
+
+    expect(page).to_not have_content another_user_public_list.name
   end  
 end
