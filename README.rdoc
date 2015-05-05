@@ -1,28 +1,11 @@
-== README
+== To-Do List
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aplicativo para gerenciamento de Listas de Tarefas. Os usuários podem criar Listas de Tarefas
+públicas (visíveis para todos os usuários) ou privadas (visível apenas para quem a criou), e
+também adicionar Listas de Tarefas aos Favoritos.
 
-Things you may want to cover:
+* Ruby 2.2.1
 
-* Ruby version
+* PostgreSQL 9.3.6
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Twitter Bootstrap 3
